@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('kriteria');
             $table->integer('bobot');
+            $table->string('tipe');
             $table->timestamps();
         });
     }

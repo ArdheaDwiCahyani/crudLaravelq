@@ -23,7 +23,7 @@ class alternatif_kos extends Model
 
     public function kriteria()
     {
-        return $this->hasMany(kriteria::class, 'id', 'kriteria_id');
+        return $this->belongsTo(Kriteria::class,'kriteria_id','id');
     }
 
     public function sub_kriteria()

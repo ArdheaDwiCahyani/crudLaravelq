@@ -7,8 +7,7 @@ use App\Models\sub_kriteria;
 use App\Models\kriteria;
 use Illuminate\Http\Request;
 use App\Models\alternatif_kos;
-use Illuminate\Support\Facades\File;
-
+use Illuminate\Support\Str;
 class alternatif_kosController extends Controller
 {
     public function index()
@@ -21,10 +20,9 @@ class alternatif_kosController extends Controller
                 'data_kriteria' => $alternatif
             ];
         }
-        // dd($data);
         $kriteria = kriteria::all();
         return view('alternatif_kos.index', [
-            'alternatif_kos'=> $data,
+            'alternatif_kos'=> $data ?? [],
             'kriteria' => $kriteria
         ]);
     }

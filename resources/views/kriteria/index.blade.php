@@ -14,6 +14,7 @@
                         <th>No</th>
                         <th>Kriteria</th>
                         <th>Bobot</th>
+                        <th>Tipe</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -24,6 +25,7 @@
                             <th>{{ $no++ }}</th>
                             <td>{{ $row -> kriteria }}</td>
                             <td>{{ $row -> bobot }}</td>
+                            <td>{{ $row -> tipe }}</td>
                             <td>
                                 <a href="{{ route('kriteria.edit', $row->id) }}" class="btn btn-success">Edit</a>
                                 <a href="{{ route('kriteria.hapus', $row->id) }}" class="btn btn-danger">Hapus</a>

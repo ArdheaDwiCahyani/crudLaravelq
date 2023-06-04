@@ -9,40 +9,16 @@
                         <th>No</th>
                         <th>Nama Kos</th>
                         <th>Nilai</th>
-                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($data as $key => $item)
                     <tr>
-                        <td>1</td>
-                        <td>Kos Melati</td>
-                        <td>86</td>
-                        <td>
-                            <a href="#" class="btn btn-success">Edit</a>
-                            <a href="#" class="btn btn-danger">Hapus</a>
-                        </td>
+                        <td>{{ $loop->index+1 }}</td>
+                        <td>{{ $item['nama_kos'] }}</td>
+                        <td>{{ $item['hasil'] }}</td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Kos Andara</td>
-                        <td>87</td>
-                        <td>
-                            <a href="#" class="btn btn-success">Edit</a>
-                            <a href="#" class="btn btn-danger">Hapus</a>
-                        </td>
-                    </tr>
-                    {{-- @php ($no = 1)
-                    @foreach ($nilai as $row)
-                        <tr>
-                            <th>{{ $no++ }}</th>
-                            <td>{{ $row -> alternatif_kos }}</td>
-                            <td>{{ $row -> nilai }}</td>
-                            <td>
-                                <a href="{{ route('sub_kriteria.edit', $row->id) }}" class="btn btn-success">Edit</a>
-                                <a href="{{ route('sub_kriteria.hapus', $row->id) }}" class="btn btn-danger">Hapus</a>
-                            </td>
-                        </tr>
-                    @endforeach --}}
+                    @endforeach
                 </tbody>
             </table>
         </div>
