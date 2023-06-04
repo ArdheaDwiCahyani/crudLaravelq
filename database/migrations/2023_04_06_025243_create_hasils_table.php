@@ -14,9 +14,10 @@ return new class extends Migration
     {
         Schema::create('hasils', function (Blueprint $table) {
             $table->id();
-            $table->integer('ranking');
             $table->bigInteger('kos_id')->unsigned();
             $table->foreign('kos_id')->references('id')->on('alternatif_kos');
+            $table->integer('nilai');
+            $table->integer('ranking');
             $table->timestamps();
         });
     }

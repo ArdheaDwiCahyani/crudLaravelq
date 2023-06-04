@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Data Admin</title>
+    <title>Data Role</title>
 
     <style>
         body {
@@ -48,26 +48,20 @@
 </head>
 
 <body>
-    <h1>Data Admin</h1>
+    <h1>Data Role</h1>
     <table align="center">
         <thead>
             <tr>
                 <th>No</th>
-                <th>Username</th>
-                <th>Nama</th>
-                <th>Jenis Kelamin</th>
-                <th>No. Telp</th>
+                <th>Role User</th>
             </tr>
         </thead>
         <tbody>
-            @php ($no = 1)
-            @foreach ($admin as $row)
+            @php($no = 1)
+            @foreach ($role_user as $row)
                 <tr>
                     <th>{{ $no++ }}</th>
-                    <td>{{ $row->username }}</td>
-                    <td>{{ $row->nama }}</td>
-                    <td>{{ $row->jenis_kelamin }}</td>
-                    <td>{{ $row->no_telp }}</td>
+                    <td>{{ $row->role_user }}</td>
                 </tr>
             @endforeach
         </tbody>

@@ -9,5 +9,5 @@ class penilaian extends Model
 {
     protected $table = 'penilaians';
 
-    protected $fillable = ['nama_kos', 'nilai'];
+    protected $fillable = ['nama_kos', 'kriteria_id', 'nilai'];
 }

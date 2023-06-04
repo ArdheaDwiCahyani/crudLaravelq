@@ -8,6 +8,8 @@ use App\Models\kriteria;
 use Illuminate\Http\Request;
 use App\Models\alternatif_kos;
 use Illuminate\Support\Str;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\File;
 class alternatif_kosController extends Controller
 {
     public function index()
@@ -94,5 +96,13 @@ class alternatif_kosController extends Controller
         alternatif_kos::find($id)->delete();
 
         return redirect()->route('alternatif_kos');
+    }
+
+    public function cetak()
+    {
+        $alternatif_kos = alternatif_kos::all();
+        view()->share('alternatif_kos', $alternatif_kos);
+        $pdf = PDF::loadview('alternatif_kos.kos_cetak');
+        return $pdf->download('data_kos.pdf');
     }
 }

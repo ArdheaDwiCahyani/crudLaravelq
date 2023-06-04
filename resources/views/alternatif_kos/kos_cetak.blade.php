@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Data Admin</title>
+    <title>Data Kos</title>
 
     <style>
         body {
@@ -48,26 +48,32 @@
 </head>
 
 <body>
-    <h1>Data Admin</h1>
+    <h1>Data Kos</h1>
     <table align="center">
         <thead>
             <tr>
-                <th>No</th>
-                <th>Username</th>
-                <th>Nama</th>
-                <th>Jenis Kelamin</th>
-                <th>No. Telp</th>
+                {{-- <th>No</th>
+                <th>Nama Kos</th>
+                <th>Jenis Kos</th>
+                <th>Biaya</th>
+                <th>Fasilitas</th>
+                <th></th>
+                <th></th>
+                <th></th> --}}
             </tr>
         </thead>
         <tbody>
-            @php ($no = 1)
-            @foreach ($admin as $row)
+            @php($no = 1)
+            @foreach ($alternatif_kos as $key => $row)
                 <tr>
                     <th>{{ $no++ }}</th>
-                    <td>{{ $row->username }}</td>
-                    <td>{{ $row->nama }}</td>
-                    <td>{{ $row->jenis_kelamin }}</td>
-                    <td>{{ $row->no_telp }}</td>
+                    <td>{{ $row['nama_kos'] }}</td>
+                    <td>{{ $row['jenis_kos'] }}</td>
+                    @foreach ($row['data_kriteria'] as $kriteria)
+                        @foreach ($kriteria['sub_kriteria'] as $sub)
+                            <td>{{ $sub->sub_kriteria }}</td>
+                        @endforeach
+                    @endforeach
                 </tr>
             @endforeach
         </tbody>

@@ -15,10 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('nama_kos');
             $table->string('jenis_kos');
-            $table->bigInteger('kriteria_id')->unsigned();
-            $table->foreign('kriteria_id')->references('id')->on('kriterias');
-            $table->bigInteger('sub_kriteria_id')->unsigned();
-            $table->foreign('sub_kriteria_id')->references('id')->on('sub_kriterias');
+            $table->string('alamat');
+            $table->bigInteger('pemilik_id')->unsigned();
+            $table->foreign('pemilik_id')->references('id')->on('pemiliks');
             $table->timestamps();
         });
     }

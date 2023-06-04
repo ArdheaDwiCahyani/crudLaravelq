@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\user;
-use Dompdf\Dompdf;
+// use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class adminController extends Controller
 {
     public function index()
     {
-        $user = user::where('role_id', '1')->get();
-        return view('admin.index', ['user' => $user]);
+        $admin = user::where('role_id', '1')->get();
+        return view('admin.index', ['admin' => $admin]);
     }
 
     public function tambah()
@@ -21,7 +22,7 @@ class adminController extends Controller
 
     public function simpan(Request $request)
     {
-        $user = [
+        $admin = [
             'username' => $request->username,
             'email' => $request->email,
             'password' => $request->password,
@@ -31,7 +32,7 @@ class adminController extends Controller
             'role_id' => 1,
         ];
 
-        user::create($user);
+        user::create($admin);
 
         return redirect()->route('admin');
     }
@@ -39,14 +40,14 @@ class adminController extends Controller
     public function edit($id)
 
     {
-        $user = user::find($id);
+        $admin = user::find($id);
 
-        return view('admin.formEdit', ['user' => $user]);
+        return view('admin.formEdit', ['admin' => $admin]);
     }
 
     public function update($id, Request $request)
     {
-        $user = [
+        $admin = [
             'username' => $request->username,
             'email' => $request->email,
             'password' => $request->password,
@@ -55,7 +56,7 @@ class adminController extends Controller
             'no_telp' => $request->no_telp,
             'role_id' => 1,
         ];
-        user::find($id)->update($user);
+        user::find($id)->update($admin);
 
         return redirect()->route('admin');
     }
@@ -69,20 +70,9 @@ class adminController extends Controller
 
     public function cetak()
     {
-        // $user = user::all();
-        // $PDF = New Dompdf;
-        // return $PDF->stream('data-admin.pdf');
-
-        // $dompdf = new Dompdf();
-        // $dompdf->loadHtml();
-        // $dompdf->setPaper('A4', 'portrait');
-        // $dompdf->render();
-
-        // Download PDF
-
-        $user = user::all();
-        $html = view('admin.cetak_admin', compact('user'))->render();
-        $pdf->loadHTML($html);
-        return $pdf->stream('document.pdf');
+        $admin = user::where('role_id', '1')->get();
+        view()->share('admin', $admin);
+        $pdf = PDF::loadview('admin.admin_cetak');
+        return $pdf->download('data_admin.pdf');
     }
 }

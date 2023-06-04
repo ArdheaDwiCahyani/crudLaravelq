@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Data Admin</title>
+    <title>Data User</title>
 
     <style>
         body {
@@ -48,7 +48,7 @@
 </head>
 
 <body>
-    <h1>Data Admin</h1>
+    <h1>Data User</h1>
     <table align="center">
         <thead>
             <tr>
@@ -61,7 +61,7 @@
         </thead>
         <tbody>
             @php ($no = 1)
-            @foreach ($admin as $row)
+            @foreach ($user as $row)
                 <tr>
                     <th>{{ $no++ }}</th>
                     <td>{{ $row->username }}</td>

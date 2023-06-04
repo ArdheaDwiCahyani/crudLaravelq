@@ -31,6 +31,12 @@
     </li>
 
     <li class="nav-item active">
+        <a class="nav-link" href="{{ route('pemilik') }}">
+            <i class="fas fa-user-plus"></i>
+            <span>Pemilik</i></span></a>
+    </li>
+
+    <li class="nav-item active">
         <a class="nav-link" href="{{ route('role') }}">
             <i class="fas fa-cogs"></i>
             <span>Role</span></a>
@@ -64,12 +70,6 @@
         <a class="nav-link" href="{{ route('hasil') }}">
             <i class="fas fa-chart-line"></i>
             <span>Hasil Perhitungan</span></a>
-    </li>
-
-    <li class="nav-item active">
-        <a class="nav-link" href="">
-            <i class="fas fa-sign-out-alt"></i>
-            <span>Log Out</span></a>
     </li>
 
     <!-- Divider -->
