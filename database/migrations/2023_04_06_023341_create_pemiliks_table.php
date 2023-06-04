@@ -16,8 +16,6 @@ return new class extends Migration
             $table->string('nama');
             $table->string('jenis_kelamin');
             $table->string('no_telp');
-            $table->bigInteger('kos_id')->unsigned();
-            $table->foreign('kos_id')->references('id')->on('alternatif_kos');
             $table->timestamps();
         });
     }

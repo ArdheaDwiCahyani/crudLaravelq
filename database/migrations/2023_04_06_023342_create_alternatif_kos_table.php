@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('nama_kos');
             $table->string('jenis_kos');
             $table->string('alamat');
+            $table->bigInteger('pemilik_id')->unsigned();
+            $table->foreign('pemilik_id')->references('id')->on('pemiliks');
             $table->timestamps();
         });
     }

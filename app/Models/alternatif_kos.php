@@ -9,7 +9,7 @@ class alternatif_kos extends Model
 {
     protected $table = 'alternatif_kos';
 
-    protected $fillable = ['nama_kos', 'jenis_kos', 'alamat'];
+    protected $fillable = ['nama_kos', 'jenis_kos', 'alamat', 'pemilik'];
 
     // public function user()
     // {
