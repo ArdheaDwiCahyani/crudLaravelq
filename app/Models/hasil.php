@@ -9,5 +9,5 @@ class hasil extends Model
 {
     protected $table = 'hasils';
 
-    protected $fillable = ['ranking', 'kos_id'];
+    protected $fillable = ['kos_id', 'nilai', 'ranking',];
 }

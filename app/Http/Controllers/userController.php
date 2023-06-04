@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\user;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\PDF;
 
 class userController extends Controller
 {
@@ -63,5 +64,13 @@ class userController extends Controller
         user::find($id)->delete();
 
         return redirect()->route('user');
+    }
+
+    public function cetak()
+    {
+        $user = user::where('role_id', '2')->get();
+        view()->share('user', $user);
+        $pdf = PDF::loadview('user.user_cetak');
+        return $pdf->download('data_user.pdf');
     }
 }

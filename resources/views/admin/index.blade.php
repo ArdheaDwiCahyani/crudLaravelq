@@ -6,15 +6,13 @@
 <div class="card shadow mb-4">
     <div class="card-body" >
         <a href="{{ route('admin.tambah') }}" class="btn tema-sidebar text-light  mb-3 mr-2"> Tambah Admin </a>
-        <a class="btn tema-text font-weight-bold mb-3 tema-border" href= {{ route('pdfadmin') }}>Export PDF</a>
+        <a class="btn tema-text font-weight-bold mb-3 tema-border" href= "{{ route('pdfadmin') }}"> Export PDF</a>
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>No</th>
                         <th>Username</th>
-                        {{-- <th>Email</th>
-                        <th>Password</th> --}}
                         <th>Nama</th>
                         <th>Jenis Kelamin</th>
                         <th>No. Telp</th>
@@ -23,7 +21,7 @@
                 </thead>
                 <tbody>
                     @php ($no = 1)
-                    @foreach ($user as $row)
+                    @foreach ($admin as $row)
                         <tr>
                             <th>{{ $no++ }}</th>
                             <td>{{ $row -> username }}</td>

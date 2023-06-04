@@ -8,6 +8,7 @@ use App\Http\Controllers\penilaianController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\sub_kriteriaController;
 use App\Http\Controllers\hasilController;
+use App\Http\Controllers\pemilikController;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
@@ -37,7 +38,7 @@ Route::controller(adminController::class) -> prefix('admin') -> group(function (
     Route::get('edit/{id}', 'edit') -> name('admin.edit');
     Route::post('edit/{id}', 'update') -> name('admin.tambah.update');
     Route::get('hapus/{id}', 'hapus') -> name('admin.hapus');
-    Route::get('/pdf-admin', 'cetak')->name('pdfadmin');
+    Route::get('/pdfadmin', 'cetak')->name('pdfadmin');
 });
 
 Route::controller(userController::class) -> prefix('user') -> group(function () {
@@ -47,6 +48,7 @@ Route::controller(userController::class) -> prefix('user') -> group(function () 
     Route::get('edit/{id}', 'edit') -> name('user.edit');
     Route::post('edit/{id}', 'update') -> name('user.tambah.update');
     Route::get('hapus/{id}', 'hapus') -> name('user.hapus');
+    Route::get('/pdfuser', 'cetak')->name('pdfuser');
 });
 
 Route::controller(alternatif_kosController::class) -> prefix('alternatif_kos') -> group(function () {
@@ -57,6 +59,17 @@ Route::controller(alternatif_kosController::class) -> prefix('alternatif_kos') -
     Route::post('edit/{id}', 'update') -> name('alternatif_kos.tambah.update');
     Route::get('hapus/{id}', 'hapus') -> name('alternatif_kos.hapus');
     Route::get('getkriteria', 'getkriteria')->name('getkriteria');
+    Route::get('/pdfkos', 'cetak')->name('pdfkos');
+});
+
+Route::controller(pemilikController::class) -> prefix('pemilik') -> group(function () {
+    Route::get('/', 'index') -> name('pemilik');
+    Route::get('tambah', 'tambah') -> name('pemilik.tambah');
+    Route::post('tambah', 'simpan') -> name('pemilik.tambah.simpan');
+    Route::get('edit/{id}', 'edit') -> name('pemilik.edit');
+    Route::post('edit/{id}', 'update') -> name('pemilik.tambah.update');
+    Route::get('hapus/{id}', 'hapus') -> name('pemilik.hapus');
+    Route::get('/pdfpemilik', 'cetak')->name('pdfpemilik');
 });
 
 Route::post('/submit-form', 'FormController@submitForm');
@@ -93,6 +106,7 @@ Route::controller(RoleController::class) -> prefix('role') -> group(function () 
     Route::get('edit/{id}', 'edit') -> name('role.edit');
     Route::post('edit/{id}', 'update') -> name('role.tambah.update');
     Route::get('hapus/{id}', 'hapus') -> name('role.hapus');
+    Route::get('/pdfrole', 'cetak') -> name('pdfrole');
 });
 
 Route::controller(penilaianController::class) -> prefix('penilaian') -> group(function () {

@@ -11,15 +11,15 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" value="{{ isset($user) ? $user->username : '' }}">
+                        <input type="text" class="form-control" id="username" name="username" value="{{ isset($admin) ? $admin->username : '' }}">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="text" class="form-control" id="email" name="email" value="{{ isset($user) ? $user->email : '' }}">
+                        <input type="text" class="form-control" id="email" name="email" value="{{ isset($admin) ? $admin->email : '' }}">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="text" class="form-control" id="password" name="password" value="{{ isset($user) ? $user->password : '' }}">
+                        <input type="text" class="form-control" id="password" name="password" value="{{ isset($admin) ? $admin->password : '' }}">
                     </div>
                 </div>
                 <div class="card-footer">

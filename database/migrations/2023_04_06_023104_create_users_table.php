@@ -17,8 +17,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('nama');
-            // $table->string('nik');
-            // $table->string('alamat');
             $table->string('jenis_kelamin');
             $table->string('no_telp');
             $table->BigInteger('role_id')->unsigned();

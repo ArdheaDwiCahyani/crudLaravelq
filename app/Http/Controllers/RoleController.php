@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\role;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class RoleController extends Controller
 {
@@ -31,7 +32,7 @@ class RoleController extends Controller
 
     public function edit($id)
     {
-        $role = role::find($id)->first();
+        $role = role::find($id);
 
         return view('role.form', ['role'=>$role]);
     }
@@ -52,5 +53,13 @@ class RoleController extends Controller
         role::find($id)->delete();
 
         return redirect()->route('role');
+    }
+
+    public function cetak()
+    {
+        $role_user = role::all();
+        view()->share('role_user', $role_user);
+        $pdf = PDF::loadview('role.role_cetak');
+        return $pdf->download('data_role.pdf');
     }
 }
