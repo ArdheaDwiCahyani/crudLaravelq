@@ -4,7 +4,9 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\alternatif_kos;
 use App\Models\kriteria;
+use App\Models\pemilik;
 use App\Models\sub_kriteria;
 use Illuminate\Database\Seeder;
 
@@ -21,6 +23,42 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        pemilik::create([
+            'nama' => 'Abdul',
+            'jenis_kelamin' => 'Laki-laki',
+            'no_telp' => '12345678'
+        ]);
+        alternatif_kos::create([
+            'nama_kos' => 'Alternatif1',
+            'jenis_kos' => 'Putra',
+            'alamat' => 'jl.golf',
+            'pemilik_id' => 1
+        ]);
+        alternatif_kos::create([
+            'nama_kos' => 'Alternatif2',
+            'jenis_kos' => 'Putra',
+            'alamat' => 'jl.golf',
+            'pemilik_id' => 1
+        ]);
+        alternatif_kos::create([
+            'nama_kos' => 'Alternatif3',
+            'jenis_kos' => 'Putra',
+            'alamat' => 'jl.golf',
+            'pemilik_id' => 1
+        ]);
+        alternatif_kos::create([
+            'nama_kos' => 'Alternatif4',
+            'jenis_kos' => 'Putra',
+            'alamat' => 'jl.golf',
+            'pemilik_id' => 1
+        ]);
+        alternatif_kos::create([
+            'nama_kos' => 'Alternatif5',
+            'jenis_kos' => 'Putra',
+            'alamat' => 'jl.golf',
+            'pemilik_id' => 1
+        ]);
         kriteria::create([
             'kriteria' => 'Biaya',
             'bobot' => '30',

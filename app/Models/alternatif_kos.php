@@ -9,12 +9,7 @@ class alternatif_kos extends Model
 {
     protected $table = 'alternatif_kos';
 
-    protected $fillable = ['nama_kos', 'jenis_kos', 'alamat', 'pemilik'];
-
-    // public function user()
-    // {
-    //     return $this->belongsTo('App\Models\user');
-    // }
+    protected $fillable = ['nama_kos', 'jenis_kos', 'alamat', 'pemilik_id'];
 
     public function user()
     {
@@ -29,5 +24,9 @@ class alternatif_kos extends Model
     public function sub_kriteria()
     {
         return $this->hasMany(sub_kriteria::class, 'id', 'sub_kriteria_id');
+    }
+    public function pemilik()
+    {
+        return $this->belongsTo(pemilik::class, 'pemilik_id', 'id');
     }
 }

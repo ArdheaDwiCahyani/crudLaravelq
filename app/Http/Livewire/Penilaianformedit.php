@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Http\Livewire;
-
-use Livewire\Component;
 use App\Models\kriteria;
 use App\Models\alternatif_kos;
 use App\Models\penilaian;
 use App\Models\sub_kriteria;
 
-class PenilaianForm extends Component
+use Livewire\Component;
+
+class Penilaianformedit extends Component
 {
     public $datakriteria = [];
     public $kos_id, $krit_and_sub;
@@ -22,7 +22,22 @@ class PenilaianForm extends Component
     {
         $this->validateOnly($propertyName);
     }
-    public function store(){
+    public function mount($id)
+    {
+        $penilaian = penilaian::where('kos_id', $id)->get();
+        
+        if ($penilaian) {
+            $this->krit_and_sub = [];
+            $this->kos_id = $penilaian->first()->kos_id;
+            dd($penilaian);
+            foreach ($penilaian as $value) {
+                $this->krit_and_sub[$value->criteria_id] = strval($value->score);
+            }
+        } else {
+            return redirect()->to('/scores');
+        }
+    }
+    public function update(){
         $validated = $this->validate();
         foreach ($this->krit_and_sub as $kos_id => $nilai) {
             $data = [
@@ -34,6 +49,7 @@ class PenilaianForm extends Component
         }
         return redirect()->to('penilaian');
     }
+
 
     public function render()
     {
@@ -47,9 +63,6 @@ class PenilaianForm extends Component
             ];
         }
         $alternatif_kos = alternatif_kos::get();
-        return view('livewire.penilaian-form', [
-            'data_kriteria' => $this->datakriteria,
-            'alternatif_kos' => $alternatif_kos
-        ]);
+        return view('livewire.penilaianformedit');
     }
 }

@@ -9,5 +9,10 @@ class hasil extends Model
 {
     protected $table = 'hasils';
 
-    protected $fillable = ['kos_id', 'nilai', 'ranking',];
+    protected $fillable = ['kos_id', 'nilai', 'ranking'];
+    
+    public function alternatif_kos()
+    {
+        return $this->belongsTo(alternatif_kos::class,'kos_id','id');
+    }
 }

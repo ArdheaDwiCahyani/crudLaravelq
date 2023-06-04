@@ -32,12 +32,12 @@ class penilaianController extends Controller
         return redirect() -> route('nilai');
     }
 
-    // public function edit($id)
-    // {
-    //     $nilai = penilaian::find($id)->first();
+    public function edit($id)
+    {
+        $nilai = penilaian::find($id)->first();
 
-    //     return view('nilai.form', ['nilai'=>$nilai]);
-    // }
+        return view('nilai.form', ['nilai'=>$nilai]);
+    }
 
     // public function update($id, Request $request)
     // {

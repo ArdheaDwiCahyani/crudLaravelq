@@ -1,5 +1,5 @@
 <div>
-    <form wire:submit.prevent='store'>
+    <form wire:submit.prevent='update'>
         @csrf
         <div class="row">
             <div class="col-12">
@@ -39,3 +39,4 @@
 
     </form>
 </div>
+

@@ -37,15 +37,7 @@ class Alternatifkosform extends Component
 
     public function render()
     {
-        $data_kriteria = Kriteria::get();
-        $this->datakriteria = [];
-        foreach( $data_kriteria as $data){
-            $sub = sub_kriteria::where('kriteria_id', $data->id)->get();
-            $this->datakriteria[] = [
-                'kriteria' => $data,
-                'sub_kriteria' => $sub
-            ];
-        }
+        
         return view('livewire.alternatifkosform', [
             'data_kriteria' => $this->datakriteria
         ]);

@@ -10,7 +10,7 @@ class hasilController extends Controller
 {
     public function index()
     {
-        $hasil = hasil::get();
+        $hasil = hasil::with('alternatif_kos')->get();
         return view('hasil.index', ['hasil'=>$hasil]);
     }
 

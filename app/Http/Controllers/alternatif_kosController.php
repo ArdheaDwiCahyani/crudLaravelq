@@ -7,6 +7,7 @@ use App\Models\sub_kriteria;
 use App\Models\kriteria;
 use Illuminate\Http\Request;
 use App\Models\alternatif_kos;
+use App\Models\pemilik;
 use Illuminate\Support\Str;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\File;
@@ -14,18 +15,9 @@ class alternatif_kosController extends Controller
 {
     public function index()
     {
-        $alternatif_kos = alternatif_kos::with(['kriteria', 'sub_kriteria'])->get()->groupBy('nama_kos');
-        foreach($alternatif_kos as $key => $alternatif){
-            $data[] = [
-                'nama_kos' => $alternatif->first()->nama_kos,
-                'jenis_kos' => $alternatif->first()->jenis_kos,
-                'data_kriteria' => $alternatif
-            ];
-        }
-        $kriteria = kriteria::all();
+        $alternatif_kos = alternatif_kos::with(['pemilik'])->get();
         return view('alternatif_kos.index', [
-            'alternatif_kos'=> $data ?? [],
-            'kriteria' => $kriteria
+            'alternatif_kos'=> $alternatif_kos
         ]);
     }
 
@@ -40,8 +32,10 @@ class alternatif_kosController extends Controller
 
     public function tambah() 
     {
-        
-        return view('alternatif_kos.form');
+        $pemilik = pemilik::get();
+        return view('alternatif_kos.form', [
+            'pemilik'=> $pemilik
+        ]);
     }
 
     public function simpan(Request $request)
@@ -50,8 +44,8 @@ class alternatif_kosController extends Controller
         $alternatif_kos = [
             'nama_kos' => $request -> nama_kos,
             'jenis_kos' => $request -> jenis_kos,
-            'kriteria_id' => $request -> kriteria_id,
-            'sub_kriteria_id' => $request -> sub_kriteria_id,
+            'alamat' => $request -> alamat,
+            'pemilik_id' => $request -> pemilik_id,
         ];
 
         alternatif_kos::create($alternatif_kos);

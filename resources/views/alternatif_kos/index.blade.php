@@ -7,7 +7,7 @@
         <div class="card-body">
             <a href="{{ route('alternatif_kos.tambah') }}" class="btn tema-sidebar text-light mb-3 mr-2"> Tambah Alternatif
                 Kos </a>
-            <a class="btn tema-text font-weight-bold mb-3 tema-border" href="{{ route('pdfkos') }}">Export PDF</a>
+            <a class="btn tema-text font-weight-bold mb-3 tema-border" href="#">Export PDF</a>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -15,9 +15,8 @@
                             <th>No</th>
                             <th>Nama Kos</th>
                             <th>Jenis Kos</th>
-                            @foreach ($kriteria as $item)
-                                <th>{{ $item->kriteria }}</th>
-                            @endforeach
+                            <th>Alamat</th>
+                            <th>Pemilik</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -26,13 +25,10 @@
                         @foreach ($alternatif_kos as $key => $row)
                             <tr>
                                 <th>{{ $no++ }}</th>
-                                <td>{{ $row['nama_kos'] }}</td>
-                                <td>{{ $row['jenis_kos'] }}</td>
-                                @foreach ($row['data_kriteria'] as $kriteria)
-                                    @foreach ($kriteria['sub_kriteria'] as $sub)
-                                        <td>{{ $sub->sub_kriteria }}</td>
-                                    @endforeach
-                                @endforeach
+                                <td>{{ $row->nama_kos }}</td>
+                                <td>{{ $row->jenis_kos }}</td>
+                                <td>{{ $row->alamat }}</td>
+                                <td>{{ $row->pemilik->nama }}</td>
                             <td>
                                 {{-- <a href="{{ route('alternatif_kos.edit', $row->id) }}" class="btn btn-success">Edit</a>
                                 <a href="{{ route('alternatif_kos.hapus', $row->id) }}" class="btn btn-danger">Hapus</a> --}}
