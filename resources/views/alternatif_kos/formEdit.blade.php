@@ -10,6 +10,10 @@
             <div class="card shadow mb-4">
                 <div class="card-body">
                     <div class="form-group">
+                        <div class="form-group">
+                            <label for="kriteria">Nama Kos</label>
+                            <input type="text" class="form-control" id="nama_kos" name="nama_kos" value="{{ isset($alternatif_kos) ? $alternatif_kos->nama_kos : '' }}">
+                        </div>
                         <label for="jenis_kos">Jenis Kos</label> <br>
                         <select class="form-control" name="jenis_kos">
                             <option hidden>Pilih Jenis Kos</option>
