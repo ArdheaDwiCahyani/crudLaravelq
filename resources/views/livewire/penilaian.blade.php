@@ -2,7 +2,7 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <a href="{{ route('penilaian.tambah') }}" class="btn tema-sidebar text-light mb-3 mr-2"> Tambah Penilaian </a>
-            <a class="btn tema-text font-weight-bold mb-3 tema-border" href="#">Export PDF</a>
+            <a class="btn tema-text font-weight-bold mb-3 tema-border" href="{{ route('pdfpenilaian') }}">Export PDF</a>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -39,8 +39,8 @@
                                 @endforeach
                                 <td class="text-center">
                                     <a href="{{ route('penilaian.edit', ['id' => $alternatif['kos_id']]) }}"
-                                        class="btn btn-sm btn-primary">EDIT</a>
-                                    {{-- <button wire:click="destroy({{ $post->id }})" class="btn btn-sm btn-danger">DELETE</button> --}}
+                                        class="btn btn-success">Edit</a>
+                                        <a href="{{ route('penilaian.hapus', $alternatif['kos_id'] ) }}" class="btn btn-danger">Hapus</a>
                                 </td>
                             </tr>
                         @endforeach

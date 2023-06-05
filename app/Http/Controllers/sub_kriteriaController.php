@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\kriteria;
 use App\Models\sub_kriteria;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class sub_kriteriaController extends Controller
 {
@@ -59,6 +60,12 @@ class sub_kriteriaController extends Controller
         return redirect()->route('sub_kriteria');
     }
 
-    
+    public function cetak()
+    {
+        $sub_kriteria = sub_kriteria::all();
+        view()->share('sub_kriteria', $sub_kriteria);
+        $pdf = PDF::loadview('sub_kriteria.sub_kriteria_cetak');
+        return $pdf->download('data_sub_kriteria.pdf');
+    }
 
 }

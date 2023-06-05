@@ -3,7 +3,7 @@
 @section('title', 'Form Kriteria')
 
 @section('content')
-    <form action="{{ isset($kriteria) ? route('kriteria.tambah.update', $kriteria->id) : route('kriteria.tambah.simpan') }}"
+    <form action="{{ request()->routeIs('kriteria.edit') ? route('kriteria.tambah.update',['id'=>$kriteria->id]) : route('kriteria.tambah.simpan') }}"
         method="post">
         @csrf
         <div class="row">
@@ -13,26 +13,32 @@
                         <div class="form-group">
                             <label for="kriteria">Kriteria</label>
                             <input type="text" class="form-control" id="kriteria" name="kriteria"
-                                value="{{ isset($kriteria) ? $kriteria->kriteria : '' }}">
+                                value="{{ request()->routeIs('kriteria.edit') ? $kriteria->kriteria : '' }}">
                         </div>
                         <div class="form-group">
                             <label for="bobot">Bobot</label>
                             <input type="text" class="form-control" id="bobot" name="bobot"
-                                value="{{ isset($kriteria) ? $kriteria->bobot : '' }}">
+                                value="{{ request()->routeIs('kriteria.edit') ? $kriteria->bobot : '' }}">
                         </div>
                         <div class="form-group">
                             <label for="tipe">Jenis Kos</label> <br>
                             <select class="form-control" name="tipe" wire:model="tipe">
-                                <option hidden>Pilih Jenis Kos</option>
-                                <option disabled="disabled" default="true">Pilih Jenis Kos</option>
+                                {{-- <option value="{{ request()->routeIs('kriteria.edit') ? $kriteria->tipe : '' }}">{{ request()->routeIs('kriteria.edit') ? $kriteria->tipe : '' }}</option> --}}
+                                
+                                @if(request()->routeIs('kriteria.edit'))
                                 <option
-                                    @if ($kriteria) @if ($kriteria->tipe == 'Cost' || old('tipe') == 'Cost')
-                            selected @endif
+                                    @if ($kriteria->tipe == 'Cost' || old('tipe') == 'Cost')
+                            selected 
                                     @endif value="Cost">Cost</option>
                                 <option
-                                    @if ($kriteria) @if ($kriteria->tipe == 'Benefit' || old('tipe') == 'Benefit')
-                                    selected @endif
+                                    @if ($kriteria->tipe == 'Benefit' || old('tipe') == 'Benefit')
+                                    selected
                                     @endif value="Benefit">Benefit</option>
+                                    @else
+                                    <option disabled selected>Pilih Jenis Kos</option>
+                                    <option value="Cost">Cost</option>
+                                    <option value="Benefit">Benefit</option>
+                                    @endif
                             </select>
                             @error('tipe')
                                 {{ $message }}

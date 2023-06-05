@@ -88,6 +88,7 @@ Route::controller(kriteriaController::class) -> prefix('kriteria') -> group(func
     Route::get('edit/{id}', 'edit') -> name('kriteria.edit');
     Route::post('edit/{id}', 'update') -> name('kriteria.tambah.update');
     Route::get('hapus/{id}', 'hapus') -> name('kriteria.hapus');
+    Route::get('/pdfkriteria', 'cetak')->name('pdfkriteria');
 });
 
 Route::controller(sub_kriteriaController::class) -> prefix('sub_kriteria') -> group(function () {
@@ -97,6 +98,7 @@ Route::controller(sub_kriteriaController::class) -> prefix('sub_kriteria') -> gr
     Route::get('edit/{id}', 'edit') -> name('sub_kriteria.edit');
     Route::post('edit/{id}', 'update') -> name('sub_kriteria.tambah.update');
     Route::get('hapus/{id}', 'hapus') -> name('sub_kriteria.hapus');
+    Route::get('/pdfsubkriteria', 'cetak')->name('pdfsubkriteria');
 });
 
 Route::controller(RoleController::class) -> prefix('role') -> group(function () {
@@ -113,19 +115,16 @@ Route::controller(penilaianController::class) -> prefix('penilaian') -> group(fu
     Route::get('', 'index') -> name('penilaian');
     Route::get('tambah', 'tambah') -> name('penilaian.tambah');
     Route::post('tambah', 'simpan') -> name('penilaian.tambah.simpan');
-    // Route::get('edit/{id}', 'edit') -> name('penilaian.edit');
     Route::get('edit/{id}', 'edit')->name('penilaian.edit');  
-    // Route::post('edit/{id}', 'update') -> name('penilaian.tambah.update');
-    // Route::get('hapus/{id}', 'hapus') -> name('penilaian.hapus');
+    Route::get('hapus/{id}', 'hapus') -> name('penilaian.hapus');
+    Route::get('/pdfpenilaian', 'cetak') -> name('pdfpenilaian');
 });
 
 Route::controller(hasilController::class) -> prefix('hasil') -> group(function () {
     Route::get('', 'index') -> name('hasil');
     Route::get('tambah', 'tambah') -> name('hasil.tambah');
     Route::post('tambah', 'simpan') -> name('hasil.tambah.simpan');
-    // Route::get('edit/{id}', 'edit') -> name('hasil.edit');
-    // Route::post('edit/{id}', 'update') -> name('hasil.tambah.update');
-    // Route::get('hapus/{id}', 'hapus') -> name('hasil.hapus');
+    Route::get('/pdfhasil', 'cetak') -> name('pdfhasil');
 });
 
 

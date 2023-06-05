@@ -4,18 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\kriteria;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class kriteriaController extends Controller
 {
     public function index()
     {
         $kriteria = kriteria::get();
-        return view('kriteria.index', ['kriteria' => $kriteria]);
+        return view('kriteria.index',compact('kriteria'));
     }
 
     public function tambah()
     {
-        return view('kriteria.form');
+        $kriteria = kriteria::all();
+        return view('kriteria.form',compact('kriteria'));
     }
 
     public function simpan(Request $request)
@@ -57,5 +59,13 @@ class kriteriaController extends Controller
         kriteria::where('id', $id)->delete();
 
         return redirect()->route('kriteria');
+    }
+
+    public function cetak()
+    {
+        $kriteria = kriteria::all();
+        view()->share('kriteria', $kriteria);
+        $pdf = PDF::loadview('kriteria.kriteria_cetak');
+        return $pdf->download('data_kriteria.pdf');
     }
 }

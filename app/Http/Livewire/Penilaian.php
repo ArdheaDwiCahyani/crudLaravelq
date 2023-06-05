@@ -146,7 +146,6 @@ class Penilaian extends Component
                 );
             }
         };
-        // dd($hasil_akhir);
         $kriteria = kriteria::all();
         return view('livewire.penilaian', [
             'kriteria' => $kriteria,
