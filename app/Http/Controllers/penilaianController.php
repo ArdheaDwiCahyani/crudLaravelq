@@ -34,9 +34,8 @@ class penilaianController extends Controller
 
     public function edit($id)
     {
-        $nilai = penilaian::find($id)->first();
-
-        return view('nilai.form', ['nilai'=>$nilai]);
+        $nilai = penilaian::where('kos_id', $id)->get();
+        return view('penilaian.form', ['id'=>$id]);
     }
 
     // public function update($id, Request $request)

@@ -11,7 +11,6 @@ use Illuminate\Support\Str;
 
 class Penilaian extends Component
 {
-
     public function render()
     {
         $penilaian = penilaians::with(['alternatif_kos', 'kriteria'])->get()->groupBy('kos_id');
