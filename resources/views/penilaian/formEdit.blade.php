@@ -3,7 +3,5 @@
 @section('title', 'Form Penilaian')
 
 @section('content')
-<div>
-    <livewire:penilaian-form>
-</div>
+    @livewire('penilaianformedit', ['penilaian' => $penilaian])
 @endsection

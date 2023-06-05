@@ -22,34 +22,31 @@ class Penilaianformedit extends Component
     {
         $this->validateOnly($propertyName);
     }
-    public function mount($id)
+    public function mount($penilaian)
     {
-        $penilaian = penilaian::where('kos_id', $id)->get();
-        
         if ($penilaian) {
             $this->krit_and_sub = [];
             $this->kos_id = $penilaian->first()->kos_id;
-            dd($penilaian);
             foreach ($penilaian as $value) {
-                $this->krit_and_sub[$value->criteria_id] = strval($value->score);
+                $this->krit_and_sub[$value->kriteria_id] = strval($value->nilai);
             }
         } else {
-            return redirect()->to('/scores');
+            return redirect()->to('/penilaian/');
         }
     }
     public function update(){
+        $this->resetErrorBag();
         $validated = $this->validate();
-        foreach ($this->krit_and_sub as $kos_id => $nilai) {
+        foreach ($this->krit_and_sub as $kriteria_id => $nilai) {
             $data = [
                 'kos_id' => $validated['kos_id'],
-                'kriteria_id' => $kos_id,
+                'kriteria_id' => $kriteria_id,
                 "nilai" => $nilai
             ];
-            penilaian::create($data);
+            penilaian::where('kos_id', $this->kos_id)->where('kriteria_id', $kriteria_id)->update($data);
         }
         return redirect()->to('penilaian');
     }
-
 
     public function render()
     {
@@ -63,6 +60,9 @@ class Penilaianformedit extends Component
             ];
         }
         $alternatif_kos = alternatif_kos::get();
-        return view('livewire.penilaianformedit');
+        return view('livewire.penilaianformedit', [
+            'alternatif_kos' => $alternatif_kos,
+            'data_kriteria' => $this->datakriteria
+        ]);
     }
 }
