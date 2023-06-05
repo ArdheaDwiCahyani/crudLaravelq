@@ -13,29 +13,15 @@ class penilaianController extends Controller
         return view('penilaian.index', ['nilai'=>$nilai]);
     }
 
-
-
     public function tambah() 
     {
         return view('penilaian.form');
     }
 
-    public function simpan(Request $request)
-    {
-        $nilai = [
-            'alternatif_kos' => $request -> alternatif_kos,
-            'nilai' => $request -> nilai,
-        ];
-
-        penilaian::create($nilai);
-
-        return redirect() -> route('nilai');
-    }
-
     public function edit($id)
     {
         $nilai = penilaian::where('kos_id', $id)->get();
-        return view('penilaian.form', ['id'=>$id]);
+        return view('penilaian.formEdit', ['penilaian'=>$nilai]);
     }
 
     // public function update($id, Request $request)

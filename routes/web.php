@@ -114,7 +114,7 @@ Route::controller(penilaianController::class) -> prefix('penilaian') -> group(fu
     Route::get('tambah', 'tambah') -> name('penilaian.tambah');
     Route::post('tambah', 'simpan') -> name('penilaian.tambah.simpan');
     // Route::get('edit/{id}', 'edit') -> name('penilaian.edit');
-    Route::get('edit/{id}', \App\Http\Livewire\PenilaianForm::class)->name('penilaian.edit');  
+    Route::get('edit/{id}', 'edit')->name('penilaian.edit');  
     // Route::post('edit/{id}', 'update') -> name('penilaian.tambah.update');
     // Route::get('hapus/{id}', 'hapus') -> name('penilaian.hapus');
 });
