@@ -10,7 +10,7 @@ class kriteria extends Model
     protected $table = 'kriterias';
     public $primaryKey = 'kriteria_id';
 
-    protected $fillable = ['kriteria', 'bobot'];
+    protected $fillable = ['kriteria', 'bobot', 'tipe'];
 
     public function sub_kriteria()
     {

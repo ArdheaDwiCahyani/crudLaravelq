@@ -10,10 +10,10 @@ class kriteriaController extends Controller
     public function index()
     {
         $kriteria = kriteria::get();
-        return view('kriteria.index', ['kriteria'=>$kriteria]);
+        return view('kriteria.index', ['kriteria' => $kriteria]);
     }
 
-    public function tambah() 
+    public function tambah()
     {
         return view('kriteria.form');
     }
@@ -21,36 +21,40 @@ class kriteriaController extends Controller
     public function simpan(Request $request)
     {
         $kriteria = [
-            'kriteria' => $request -> kriteria,
-            'bobot' => $request -> bobot,
+            'kriteria' => $request->kriteria,
+            'bobot' => $request->bobot,
+            'tipe' => $request->tipe,
         ];
 
         kriteria::create($kriteria);
 
-        return redirect() -> route('kriteria');
+        return redirect()->route('kriteria');
     }
 
     public function edit($id)
     {
-        $kriteria = kriteria::find($id)->first();
-
-        return view('kriteria.form', ['kriteria'=>$kriteria]);
+        $kriterias = kriteria::where('id', $id)->get();
+        foreach ($kriterias as $kriteria) {
+            $data = $kriteria;
+        }
+        return view('kriteria.form', ['kriteria' => $data]);
     }
 
     public function update($id, Request $request)
     {
         $kriteria = [
-            'kriteria' => $request -> kriteria,
-            'bobot' => $request -> bobot,
+            'kriteria' => $request->kriteria,
+            'bobot' => $request->bobot,
+            'tipe' => $request->tipe,
         ];
-        kriteria::find($id)->update($kriteria);
+        kriteria::where('id', $id)->update($kriteria);
 
-        return redirect() -> route('kriteria');
+        return redirect()->route('kriteria');
     }
 
     public function hapus($id)
     {
-        kriteria::find($id)->delete();
+        kriteria::where('id', $id)->delete();
 
         return redirect()->route('kriteria');
     }
