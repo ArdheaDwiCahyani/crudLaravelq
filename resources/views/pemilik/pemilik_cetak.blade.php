@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Data Kos</title>
+    <title>Data Pemilik</title>
 
     <style>
         body {
@@ -48,26 +48,24 @@
 </head>
 
 <body>
-    <h1>Data Kos</h1>
+    <h1>Data Pemilik</h1>
     <table align="center">
         <thead>
             <tr>
                 <th>No</th>
-                <th>Nama Kos</th>
-                <th>Jenis Kos</th>
-                <th>Alamat</th>
-                <th>Pemilik</th>
+                <th>Nama</th>
+                <th>Jenis Kelamin</th>
+                <th>No. Telp</th>
             </tr>
         </thead>
         <tbody>
-            @php($no = 1)
-            @foreach ($alternatif_kos as $key => $row)
+            @php ($no = 1)
+            @foreach ($pemilik as $row)
                 <tr>
                     <th>{{ $no++ }}</th>
-                    <td>{{ $row->nama_kos }}</td>
-                    <td>{{ $row->jenis_kos }}</td>
-                    <td>{{ $row->alamat }}</td>
-                    <td>{{ $row->pemilik->nama }}</td>
+                    <td>{{ $row->nama }}</td>
+                    <td>{{ $row->jenis_kelamin }}</td>
+                    <td>{{ $row->no_telp }}</td>
                 </tr>
             @endforeach
         </tbody>

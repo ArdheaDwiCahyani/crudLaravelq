@@ -56,8 +56,11 @@ class alternatif_kosController extends Controller
     public function edit($id)
     {
         $alternatif_kos = alternatif_kos::find($id);
-
-        return view('alternatif_kos.formEdit', ['alternatif_kos'=>$alternatif_kos]);
+        $pemilik = pemilik::get();
+        return view('alternatif_kos.formEdit', [
+            'alternatif_kos'=>$alternatif_kos,
+            'pemilik' => $pemilik
+        ]);
     }
 
     public function update($id, Request $request)

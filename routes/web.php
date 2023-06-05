@@ -59,7 +59,7 @@ Route::controller(alternatif_kosController::class) -> prefix('alternatif_kos') -
     Route::post('edit/{id}', 'update') -> name('alternatif_kos.tambah.update');
     Route::get('hapus/{id}', 'hapus') -> name('alternatif_kos.hapus');
     Route::get('getkriteria', 'getkriteria')->name('getkriteria');
-    Route::get('/pdfkos', 'cetak')->name('pdfkos');
+    Route::get('/pdfalternatif_kos', 'cetak')->name('pdfalternatif_kos');
 });
 
 Route::controller(pemilikController::class) -> prefix('pemilik') -> group(function () {
@@ -113,7 +113,8 @@ Route::controller(penilaianController::class) -> prefix('penilaian') -> group(fu
     Route::get('', 'index') -> name('penilaian');
     Route::get('tambah', 'tambah') -> name('penilaian.tambah');
     Route::post('tambah', 'simpan') -> name('penilaian.tambah.simpan');
-    Route::get('edit/{id}', 'edit') -> name('penilaian.edit');
+    // Route::get('edit/{id}', 'edit') -> name('penilaian.edit');
+    Route::get('edit/{id}', \App\Http\Livewire\PenilaianForm::class)->name('penilaian.edit');  
     // Route::post('edit/{id}', 'update') -> name('penilaian.tambah.update');
     // Route::get('hapus/{id}', 'hapus') -> name('penilaian.hapus');
 });

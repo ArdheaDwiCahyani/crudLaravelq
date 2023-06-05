@@ -10,38 +10,36 @@
             <div class="card shadow mb-4">
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="nama_kos">Nama Kos</label>
-                        <input type="text" class="form-control" id="nama_kos" name="nama_kos" value="{{ isset($alternatif_kos) ? $alternatif_kos->nama_kos : '' }}">
-                    </div>
-                    <div class="form-group">
                         <label for="jenis_kos">Jenis Kos</label> <br>
                         <select class="form-control" name="jenis_kos">
-                            <option selected disabled>--- Pilih Jenis Kos---</option>
-                           
-                            <option value="Putra" @if($alternatif_kos->jenis_kos == 'Putra') selected @endif>Putra</option>
-                            <option value="Putri" @if($alternatif_kos->jenis_kos == 'Putri') selected @endif>Putri</option>
-                            <option value="Bebas" @if($alternatif_kos->jenis_kos == 'Bebas') selected @endif>Bebas</option>
-
+                            <option hidden>Pilih Jenis Kos</option>
+                            <option disabled="disabled" default="true">Pilih Jenis Kos</option>
+                            <option @if (old('jenis_kos') == "Putra") selected @endif value="Putra">Putra</option>
+                            <option @if (old('jenis_kos') == "Putri") selected @endif value="Putri">Putri</option>
+                            <option @if (old('jenis_kos') == "Bebas") selected @endif  value="Bebas">Bebas</option>
                         </select>
+                        @error('jenis_kos')
+                            {{ $message }}
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <label for="kriteria">Kriteria</label>
-                        <select class="form-control" name="kriteria_id">
-                            <option value="0">--- Pilih Kriteria ---</option>
-                            @foreach ($data as $row)   
-                            <option value="{{ $row->id }}"@if($alternatif_kos->kriteria_id == $row->id) selected @endif>{{ $row->kriteria }}</option>
-                            @endforeach
-                        </select>
+                        <label for="alamat">Alamat</label>
+                        <input type="text" class="form-control" id="alamat" name="alamat" value="{{ isset($alternatif_kos) ? $alternatif_kos->alamat : '' }}">
                     </div>
                     <div class="form-group">
-                        <label for="sub_kriteria">Sub Kriteria</label>
-                        <select class="form-control" name="sub_kriteria_id">
-                            <option value="0">--- Pilih Sub Kriteria ---</option>
-                            @foreach ($data as $row)   
-                            <option value="{{ $row->id }}"@if($alternatif_kos->sub_kriteria_id == $row->id) selected @endif>{{ $row->sub_kriteria }}</option>
+                        <label for="pemilik">Pemilik</label> <br>
+                        <select class="form-control" name="pemilik_id">
+                            <option hidden>Pilih Pemilik Kos</option>
+                            <option disabled="disabled" default="true">Pilih Pemilik Kos</option>
+                            @foreach ($pemilik as $item)
+                            <option value="{{ $item->id }}">{{ $item->nama }}</option>
                             @endforeach
                         </select>
+                        @error('pemilik')
+                            {{ $message }}
+                        @enderror
                     </div>
+                </div>
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn tema-sidebar text-light">Simpan</button>
