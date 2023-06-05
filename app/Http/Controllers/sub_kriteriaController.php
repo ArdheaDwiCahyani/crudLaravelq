@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\kriteria;
 use App\Models\sub_kriteria;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class sub_kriteriaController extends Controller
 
     public function tambah() 
     {
-        return view('sub_kriteria.form');
+        $kriteria = kriteria::get();
+        return view('sub_kriteria.form', compact('kriteria'));
     }
 
     public function simpan(Request $request)

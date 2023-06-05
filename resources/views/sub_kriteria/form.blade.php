@@ -13,11 +13,9 @@
                         <label for="kriteria_id">Kriteria</label>
                         <select class="form-control" name="kriteria_id">
                             <option value="0">--- Pilih Kriteria ---</option>
-                            <option value="1">Biaya</option>
-                            <option value="2">Fasilitas</option>
-                            <option value="3">Jarak</option>
-                            <option value="4">Luas Kamar</option>
-                            <option value="5">Keamanan</option>
+                            @foreach ($kriteria as $row)
+                                <option value="{{ $row->id }}">{{ $row->kriteria }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group">

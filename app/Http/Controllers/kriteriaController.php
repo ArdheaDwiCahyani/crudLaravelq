@@ -23,6 +23,7 @@ class kriteriaController extends Controller
         $kriteria = [
             'kriteria' => $request -> kriteria,
             'bobot' => $request -> bobot,
+            'tipe' => $request -> tipe,
         ];
 
         kriteria::create($kriteria);
@@ -42,6 +43,7 @@ class kriteriaController extends Controller
         $kriteria = [
             'kriteria' => $request -> kriteria,
             'bobot' => $request -> bobot,
+            'tipe' => $request -> tipe,
         ];
         kriteria::find($id)->update($kriteria);
 

@@ -17,6 +17,10 @@
                         <label for="bobot">Bobot</label>
                         <input type="text" class="form-control" id="bobot" name="bobot" value="{{ isset($kriteria) ? $kriteria->bobot : '' }}">
                     </div>
+                    <div class="form-group">
+                        <label for="tipe">Tipe</label>
+                        <input type="text" class="form-control" id="tipe" name="tipe" value="{{ isset($kriteria) ? $kriteria->tipe : '' }}">
+                    </div>
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn tema-sidebar text-light">Simpan</button>

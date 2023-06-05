@@ -30,8 +30,8 @@
                                 <td>{{ $row->alamat }}</td>
                                 <td>{{ $row->pemilik->nama }}</td>
                             <td>
-                                {{-- <a href="{{ route('alternatif_kos.edit', $row->id) }}" class="btn btn-success">Edit</a>
-                                <a href="{{ route('alternatif_kos.hapus', $row->id) }}" class="btn btn-danger">Hapus</a> --}}
+                                <a href="{{ route('alternatif_kos.edit', $row->id) }}" class="btn btn-success">Edit</a>
+                                {{-- <a href="{{ route('alternatif_kos.hapus', $row->id) }}" class="btn btn-danger">Hapus</a> --}}
                             </td> 
                             </tr>
                         @endforeach
