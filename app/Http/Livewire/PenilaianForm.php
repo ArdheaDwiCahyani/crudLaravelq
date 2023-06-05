@@ -22,6 +22,9 @@ class PenilaianForm extends Component
     {
         $this->validateOnly($propertyName);
     }
+    public function mount(penilaian $penilaian){
+        dd($penilaian);
+    }
     public function store(){
         $validated = $this->validate();
         foreach ($this->krit_and_sub as $kos_id => $nilai) {

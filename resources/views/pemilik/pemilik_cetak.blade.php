@@ -52,28 +52,20 @@
     <table align="center">
         <thead>
             <tr>
-                {{-- <th>No</th>
+                <th>No</th>
                 <th>Nama</th>
-                <th>Jenis Kos</th>
-                <th>Biaya</th>
-                <th>Fasilitas</th>
-                <th></th>
-                <th></th>
-                <th></th> --}}
+                <th>Jenis Kelamin</th>
+                <th>No. Telp</th>
             </tr>
         </thead>
         <tbody>
-            @php($no = 1)
-            @foreach ($alternatif_kos as $key => $row)
+            @php ($no = 1)
+            @foreach ($pemilik as $row)
                 <tr>
                     <th>{{ $no++ }}</th>
-                    <td>{{ $row['nama_kos'] }}</td>
-                    <td>{{ $row['jenis_kos'] }}</td>
-                    @foreach ($row['data_kriteria'] as $kriteria)
-                        @foreach ($kriteria['sub_kriteria'] as $sub)
-                            <td>{{ $sub->sub_kriteria }}</td>
-                        @endforeach
-                    @endforeach
+                    <td>{{ $row->nama }}</td>
+                    <td>{{ $row->jenis_kelamin }}</td>
+                    <td>{{ $row->no_telp }}</td>
                 </tr>
             @endforeach
         </tbody>

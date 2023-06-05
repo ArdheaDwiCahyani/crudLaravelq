@@ -61,7 +61,7 @@ class pemilikController extends Controller
 
     public function cetak()
     {
-        $pemilik = pemilik::where('role_id', '1')->get();
+        $pemilik = pemilik::all();
         view()->share('pemilik', $pemilik);
         $pdf = PDF::loadview('pemilik.pemilik_cetak');
         return $pdf->download('data_pemilik.pdf');

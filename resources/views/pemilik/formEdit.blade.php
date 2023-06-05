@@ -3,7 +3,7 @@
 @section('title', 'Form Pemilik')
 
 @section('content')
-<form action="{{ route('pemilik.tambah.update'), $pemilik->id}}" method="post">
+<form action="{{ route('pemilik.tambah.update', $pemilik->id)}}" method="post">
     @csrf
     <div class="row">
         <div class="col-12">
